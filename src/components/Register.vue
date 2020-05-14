@@ -33,7 +33,7 @@ export default {
     return {
       title: '人工智能实践平台',
       emailState: "",
-      userNameState: "",
+      userNameState: "success",
       userInfo: {
         userName: "",
         email: ""
@@ -62,33 +62,33 @@ export default {
         }
       }
     },
-    "userInfo.userName": {
-      handler(newValue) {
-        var userNameLength = newValue.length;
-        var reg = /^[a-zA-Z][a-zA-Z0-9+-_ ]{5,}$/
-        if (reg.test(newValue)) {
-          // 如果用户名输入超过 6 位, 触发校验
-          this.axios.get(`users/check/${this.userInfo.userName}/`).then(res => {
-            if (res.data.username) {
-              this.userNameState = "error";
-              Toast({
-                message: '用户名已被注册',
-                position: 'bottom',
-                duration: 1000
-              });
-            } else {
-              this.userNameState = "success";
-            }
-          }).catch(err => {
-            console.log(err);
-          })
-        } else if (!reg.test(newValue) && userNameLength !== 0) {
-          this.userNameState = "warning";
-        } else {
-          this.userNameState = "";
-        }
-      }
-    }
+    // "userInfo.userName": {
+    //   handler(newValue) {
+    //     var userNameLength = newValue.length;
+    //     var reg = /^[a-zA-Z][a-zA-Z0-9+-_ ]{5,}$/
+    //     if (reg.test(newValue)) {
+    //       // 如果用户名输入超过 6 位, 触发校验
+    //       this.axios.get(`users/check/${this.userInfo.userName}/`).then(res => {
+    //         if (res.data.username) {
+    //           this.userNameState = "error";
+    //           Toast({
+    //             message: '用户名已被注册',
+    //             position: 'bottom',
+    //             duration: 1000
+    //           });
+    //         } else {
+    //           this.userNameState = "success";
+    //         }
+    //       }).catch(err => {
+    //         console.log(err);
+    //       })
+    //     } else if (!reg.test(newValue) && userNameLength !== 0) {
+    //       this.userNameState = "warning";
+    //     } else {
+    //       this.userNameState = "";
+    //     }
+    //   }
+    // }
   },
   methods: {
     register() {

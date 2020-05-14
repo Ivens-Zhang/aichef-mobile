@@ -2,7 +2,7 @@
 node_modules
 
 # local env files
-.env.local
+88nv.local
 .env.*.local
 
 # Log files
