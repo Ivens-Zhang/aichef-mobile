@@ -1,28 +1,40 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div class="registerDiv">
+      <Register></Register>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Register from "./components/Register";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
+    Register
   }
-}
+};
 </script>
 
 <style>
+html {
+  height: 100%;
+}
+body {
+  height: 100%;
+  background-image: url('./assets/backgroundPic.png');
+}
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  height: 100%;
+  position: relative; 
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+}
+
+.registerDiv {
+  display: inline-block;
+  position: relative;
+  top: 40%;
+  padding: 3%;
 }
 </style>
