@@ -1,5 +1,15 @@
 import Vue from 'vue'
 import App from './App.vue'
+import MintUI from 'mint-ui'
+import 'mint-ui/lib/style.css'
+import axios from "axios";
+
+// 给 axios 设置 baseURL, 方便在组件中直接 this.axios 使用
+Vue.prototype.axios=axios.create({
+  baseURL: 'http://10.0.2.6:8081/api/'
+})
+
+Vue.use(MintUI)
 
 Vue.config.productionTip = false
 
