@@ -33,7 +33,7 @@ export default {
     return {
       title: '人工智能实践平台',
       emailState: "",
-      userNameState: "success",
+      userNameState: "",
       userInfo: {
         userName: "",
         email: ""
@@ -42,7 +42,8 @@ export default {
         username: "admin",
         password: "admin123"
       },
-      token: ""
+      token: "",
+      classID: '74777f13-4f11-4151-9c85-16ee3d888096',  // 这里写要指定加入的班级
     };
   },
   watch: {
@@ -62,33 +63,33 @@ export default {
         }
       }
     },
-    // "userInfo.userName": {
-    //   handler(newValue) {
-    //     var userNameLength = newValue.length;
-    //     var reg = /^[a-zA-Z][a-zA-Z0-9+-_ ]{5,}$/
-    //     if (reg.test(newValue)) {
-    //       // 如果用户名输入超过 6 位, 触发校验
-    //       this.axios.get(`users/check/${this.userInfo.userName}/`).then(res => {
-    //         if (res.data.username) {
-    //           this.userNameState = "error";
-    //           Toast({
-    //             message: '用户名已被注册',
-    //             position: 'bottom',
-    //             duration: 1000
-    //           });
-    //         } else {
-    //           this.userNameState = "success";
-    //         }
-    //       }).catch(err => {
-    //         console.log(err);
-    //       })
-    //     } else if (!reg.test(newValue) && userNameLength !== 0) {
-    //       this.userNameState = "warning";
-    //     } else {
-    //       this.userNameState = "";
-    //     }
-    //   }
-    // }
+    "userInfo.userName": {
+      handler(newValue) {
+        var userNameLength = newValue.length;
+        var reg = /^[a-zA-Z][a-zA-Z0-9+-_ ]{5,}$/
+        if (reg.test(newValue)) {
+          // 如果用户名输入超过 6 位, 触发校验
+          this.axios.get(`users/check/${this.userInfo.userName}/`).then(res => {
+            if (res.data.username) {
+              this.userNameState = "error";
+              Toast({
+                message: '用户名已被注册',
+                position: 'bottom',
+                duration: 1000
+              });
+            } else {
+              this.userNameState = "success";
+            }
+          }).catch(err => {
+            console.log(err);
+          })
+        } else if (!reg.test(newValue) && userNameLength !== 0) {
+          this.userNameState = "warning";
+        } else {
+          this.userNameState = "";
+        }
+      }
+    }
   },
   methods: {
     register() {
@@ -123,7 +124,7 @@ export default {
           .then(() => {
             this.axios({
               method: "PUT",
-              url: `claszes/2f737ea8-99aa-4e2e-9f34-d7acc6aff134/add-member/${this.userInfo.userName}/`,
+              url: `claszes/${this.classID}/add-member/${this.userInfo.userName}/`,
               headers: {
                 Accept: "*/*",
                 Authentication: this.token
@@ -140,6 +141,9 @@ export default {
               });
               this.timer = void 0;
             }, 1000);
+          }).then(() => {
+            this.userInfo.userName = '',
+            this.userInfo.email = ''
           })
           .catch(err => {
             console.log(err);

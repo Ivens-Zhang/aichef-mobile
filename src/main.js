@@ -6,7 +6,7 @@ import axios from "axios";
 
 // 给 axios 设置 baseURL, 方便在组件中直接 this.axios 使用
 Vue.prototype.axios=axios.create({
-  baseURL: 'http://10.0.2.6:8081/api/'
+  baseURL: 'http://139.217.114.86:8080/'
 })
 
 Vue.use(MintUI)
