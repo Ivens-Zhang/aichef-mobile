@@ -3,6 +3,7 @@ import App from './App.vue'
 import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
 import axios from "axios";
+import router from './router'
 
 // 给 axios 设置 baseURL, 方便在组件中直接 this.axios 使用
 Vue.prototype.axios=axios.create({
@@ -14,5 +15,6 @@ Vue.use(MintUI)
 Vue.config.productionTip = false
 
 new Vue({
-  render: h => h(App),
+  router,
+  render: h => h(App)
 }).$mount('#app')

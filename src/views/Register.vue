@@ -1,6 +1,6 @@
 <template>
   <div class="formClass">
-    <h1 class="title">{{title}}</h1>
+    <Title class="title"></Title>
     <div class="userInfoClass">
       <mt-field
         label="用户名"
@@ -24,10 +24,11 @@
 
 <script>
 import { Indicator, Toast } from "mint-ui";
+import Title from '../components/Title';
 export default {
-  name: "HelloWorld",
-  props: {
-    msg: String
+  name: "Register",
+  components: {
+    Title
   },
   data() {
     return {
@@ -139,6 +140,7 @@ export default {
                 position: 'bottom',
                 duration: 1000
               });
+              this.$router.push('/success')
               this.timer = void 0;
             }, 1000);
           }).then(() => {
@@ -172,6 +174,12 @@ export default {
           position: 'bottom',
           duration: 2000
         });
+      } else {
+        Toast({
+          message: '用户信息填写不正确',
+          position: 'bottom',
+          duration: 2000
+        });
       }
     }
   },
@@ -184,27 +192,29 @@ export default {
 </script>
 
 <style scoped>
+.formClass {
+  padding: 5%;
+  margin-top: 30%;
+  background: rgba(255, 255, 255, .3);
+  box-shadow: 3px 3px 6px 3px rgba(0, 0, 0, .3);
+}
+
 .title {
-  margin-top: -50%;
-  padding-bottom: 30%;
-  color: white;
-}
-
-.btn {
-  margin-top: 50%;
-  font-weight: bold;
-}
-
-.userNameClass {
-  margin-bottom: 10px;
-}
-
-.emailClass, .userNameClass {
-  /* border-radius: 5%; */
+  margin-bottom: 10%;
 }
 
 .userInfoClass {
   background: rgba(255, 255, 255, .3);
   box-shadow: 3px 3px 6px 3px rgba(0, 0, 0, .3);
 }
+
+.userNameClass {
+  margin-bottom: 4px;
+}
+
+.btn {
+  margin-top: 40%;
+  font-weight: bold;
+}
+
 </style>
