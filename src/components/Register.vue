@@ -31,7 +31,7 @@ export default {
   },
   data() {
     return {
-      title: '人工智能实践平台',
+      title: 'AI 新课堂',
       emailState: "",
       userNameState: "",
       userInfo: {
