@@ -75,7 +75,7 @@ export default {
               this.userNameState = "error";
               Toast({
                 message: '用户名已被注册',
-                position: 'bottom',
+                position: 'top',
                 duration: 1000
               });
             } else {
@@ -137,7 +137,7 @@ export default {
               // 加载完成后底部弹出 toast
               Toast({
                 message: '注册成功',
-                position: 'bottom',
+                position: 'top',
                 duration: 1000
               });
               this.$router.push('/success')
@@ -153,31 +153,31 @@ export default {
       } else if (this.emailState === 'warning' && this.userNameState === "success") {
         Toast({
           message: '请输入正确的邮箱格式',
-          position: 'bottom',
+          position: 'top',
           duration: 2000
         });
       } else if (this.emailState === 'success' && this.userNameState === "error") {
         Toast({
           message: '请输入正确的用户名格式',
-          position: 'bottom',
+          position: 'top',
           duration: 2000
         });
       } else if (this.userNameState === "warning") {
         Toast({
           message: '请输入格式正确的用户名',
-          position: 'bottom',
+          position: 'top',
           duration: 2000
         });
       } else if (this.emailState === '' || this.userNameState === "") {
         Toast({
           message: '用户信息不可为空',
-          position: 'bottom',
+          position: 'top',
           duration: 2000
         });
       } else {
         Toast({
           message: '用户信息填写不正确',
-          position: 'bottom',
+          position: 'top',
           duration: 2000
         });
       }
